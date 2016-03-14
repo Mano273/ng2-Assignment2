@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>Assignment 2</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+	
+	<script type="text/javascript">
+		var myApp=angular.module("myModule",[]);
+		myApp.controller("myController",function($scope){
+			var employee=[
+					{name:"Taylor",employeeId:1361,points:100},
+					{name:"Tina",employeeId:1371,points:50},
+					{name:"Aron",employeeId:1661,points:75},
+					{name:"Mathew",employeeId:1561,points:20}
+				];
+			$scope.employee=employee;
+			$scope.showAlert=function(e)
+			{
+				if (e.points>50){
+					alert(e.name+" is an Excellent Employee"
+					)
+				}
+				else{
+					alert(e.name+" needs to improve")
+				}
+			};
+			
+		});
+	</script>
+</head>
+<body ng-App="myModule">
+	<div ng-controller="myController">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>ID</th>
+					<th>Performance</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr ng-repeat="e in employee">
+					<td>{{e.name}}</td>
+					<td>{{e.employeeId}}</td>
+					<td><input type="button" value="show" ng-click="showAlert(e)"></td>
+				</tr>
+			</tbody>	
+
+		</table>
+		<!-- <label>Name</label>:{{employee.name}}<br>
+		<lable>Id</label>:{{employee.employeeId}}<br>
+		
+		<input type="button" value="submit" ng-click="showAlert()"> -->
+	</div>
+</body>
+</html>
